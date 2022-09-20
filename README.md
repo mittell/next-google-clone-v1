@@ -4,7 +4,7 @@ A Google Search clone built with Next.js and Tailwind.
 
 ## Demo
 
-[Link]()
+[Link](https://soft-cranachan-9f35f4.netlify.app/)
 
 ## Getting Started
 
