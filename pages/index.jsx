@@ -1,10 +1,28 @@
+import { useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Header from '../components/Header';
+import { useRouter } from 'next/router';
+
 import { MagnifyingGlassIcon, MicrophoneIcon } from '@heroicons/react/20/solid';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default function Home() {
+	const router = useRouter();
+	const searchInputRef = useRef(null);
+
+	const handleSearch = (e) => {
+		e.preventDefault;
+
+		const searchTerm = searchInputRef.current.value;
+
+		if (!searchTerm.trim()) {
+			return;
+		}
+
+		router.push(`/search?term=${searchTerm.trim()}`);
+	};
+
 	const styles = {
 		form: 'flex flex-col items-center mt-40',
 		inputContainer:
@@ -41,11 +59,17 @@ export default function Home() {
 				/>
 				<div className={styles.inputContainer}>
 					<MagnifyingGlassIcon className={styles.searchIcon} />
-					<input type='text' className={styles.searchInput} />
+					<input
+						type='text'
+						className={styles.searchInput}
+						ref={searchInputRef}
+					/>
 					<MicrophoneIcon className={styles.microphoneIcon} />
 				</div>
 				<div className={styles.buttonContainer}>
-					<button className={styles.button}>Google Search</button>
+					<button className={styles.button} onClick={handleSearch}>
+						Google Search
+					</button>
 					<button className={styles.button}>I&apos;m Feeling Lucky</button>
 				</div>
 			</form>
