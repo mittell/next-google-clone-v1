@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
-const User = () => {
+const User = ({ className }) => {
 	const { data: session } = useSession();
 
 	const styles = {
@@ -15,7 +15,7 @@ const User = () => {
 		return (
 			<>
 				<img
-					className={styles.userImage}
+					className={`${styles.userImage} ${className}`}
 					src={session.user.image}
 					alt='User Image'
 					onClick={signOut}
@@ -26,7 +26,7 @@ const User = () => {
 
 	return (
 		<>
-			<button className={styles.signIn} onClick={signIn}>
+			<button className={`${styles.signIn} ${className}`} onClick={signIn}>
 				Sign In
 			</button>
 		</>

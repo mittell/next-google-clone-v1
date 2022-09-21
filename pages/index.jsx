@@ -12,15 +12,15 @@ export default function Home() {
 	const searchInputRef = useRef(null);
 
 	const handleSearch = (e) => {
-		e.preventDefault;
+		e.preventDefault();
 
-		const searchTerm = searchInputRef.current.value;
+		const searchTerm = searchInputRef.current.value.trim();
 
-		if (!searchTerm.trim()) {
+		if (!searchTerm) {
 			return;
 		}
 
-		router.push(`/search?term=${searchTerm.trim()}`);
+		router.push({ pathname: '/search', query: { term: searchTerm } });
 	};
 
 	const styles = {
