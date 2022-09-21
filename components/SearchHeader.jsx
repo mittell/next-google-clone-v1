@@ -7,6 +7,7 @@ import {
 	XMarkIcon,
 } from '@heroicons/react/20/solid';
 import User from './User';
+import SearchHeaderOptions from './SearchHeaderOptions';
 
 const SearchHeader = () => {
 	const router = useRouter();
@@ -29,16 +30,19 @@ const SearchHeader = () => {
 			return;
 		}
 
-		router.push({ pathname: '/search', query: { term: searchTerm } });
+		router.push({
+			pathname: '/search',
+			query: { term: searchTerm, searchType: '' },
+		});
 	};
 
 	const styles = {
-		header: 'sticky top-0 bg-white cursor-pointer',
+		header: 'sticky top-0 bg-white',
 		headerImage: 'cursor-pointer',
 		xIcon: 'h-7 text-gray-500 cursor-pointer sm:mr-3',
 		microphoneIcon:
-			'h-6 hidden sm:inline-flex text-blue-500 pl-4 border-l-2 border-gray-300 mr-3',
-		searchIcon: 'h-6 hidden sm:inline-flex text-blue-500',
+			'h-6 hidden sm:inline-flex text-blue-500 pl-4 border-l-2 border-gray-300 mr-3 cursor-pointer',
+		searchIcon: 'h-6 hidden sm:inline-flex text-blue-500 cursor-pointer',
 		container: 'flex w-full p-6 items-center',
 		user: 'ml-auto whitespace-nowrap',
 		searchForm:
@@ -75,6 +79,7 @@ const SearchHeader = () => {
 				</form>
 				<User className={styles.user} />
 			</div>
+			<SearchHeaderOptions />
 		</header>
 	);
 };

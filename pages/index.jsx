@@ -20,7 +20,10 @@ export default function Home() {
 			return;
 		}
 
-		router.push({ pathname: '/search', query: { term: searchTerm } });
+		router.push({
+			pathname: '/search',
+			query: { term: searchTerm, searchType: '' },
+		});
 	};
 
 	const styles = {
