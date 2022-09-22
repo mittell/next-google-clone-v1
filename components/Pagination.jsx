@@ -10,7 +10,7 @@ const Pagination = () => {
 	const styles = {
 		containerOld:
 			'text-blue-700 flex px-9 pb-4 justify-between sm:justify-start sm:space-x-44 sm:px-0',
-		container: 'text-blue-700 flex px-9 pb-4 justify-between sm:mr-30 md:mr-40',
+		container: 'text-blue-700 flex px-9 pb-4 justify-between',
 		linkPrevIconContainer:
 			'cursor-pointer flex flex-col items-center hover:underline',
 		linkPrevIcon: 'h-5',
