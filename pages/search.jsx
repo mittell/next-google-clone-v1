@@ -4,6 +4,7 @@ import SearchHeader from '../components/SearchHeader';
 import { searchData, imageData } from '../mockResponse';
 import SearchResults from '../components/SearchResults';
 import { useRouter } from 'next/router';
+import ImageResults from '../components/ImageResults';
 
 const Search = ({ results }) => {
 	const router = useRouter();
@@ -17,8 +18,12 @@ const Search = ({ results }) => {
 			{/* Search Header */}
 			<SearchHeader />
 
-			{/* Search Results */}
-			<SearchResults results={results} />
+			{/* Search/Image Results */}
+			{router.query.searchType === 'image' ? (
+				<ImageResults results={results} />
+			) : (
+				<SearchResults results={results} />
+			)}
 		</div>
 	);
 };
@@ -30,7 +35,7 @@ export const getServerSideProps = async (context) => {
 	const mockData = true;
 
 	const data = mockData
-		? searchData
+		? imageData
 		: await fetch(
 				`https://www.googleapis.com/customsearch/v1?key=${
 					process.env.GOOGLE_SEARCH_API_KEY
