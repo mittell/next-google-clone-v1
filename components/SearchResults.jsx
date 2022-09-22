@@ -21,7 +21,7 @@ const SearchResults = ({ results }) => {
 					About {results.searchInformation.formattedTotalResults} results (
 					{results.searchInformation.formattedSearchTime} seconds)
 				</p>
-				{results.items.map((result) => (
+				{results.items?.map((result) => (
 					<div key={result.link} className={styles.resultContainer}>
 						<div className={styles.resultTitleGroup}>
 							<a href={result.link} className={styles.resultLink}>
