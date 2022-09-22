@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 const User = ({ className }) => {
 	const { data: session } = useSession();
@@ -18,7 +18,6 @@ const User = ({ className }) => {
 					className={`${styles.userImage} ${className}`}
 					src={session.user.image}
 					alt='User Image'
-					onClick={signOut}
 				/>
 			</>
 		);
@@ -26,9 +25,7 @@ const User = ({ className }) => {
 
 	return (
 		<>
-			<button className={`${styles.signIn} ${className}`} onClick={signIn}>
-				Sign In
-			</button>
+			<button className={`${styles.signIn} ${className}`}>Sign In</button>
 		</>
 	);
 };
