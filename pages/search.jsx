@@ -26,7 +26,9 @@ const Search = ({ results }) => {
 export default Search;
 
 export const getServerSideProps = async (context) => {
+	const startIndex = context.query.start || '1';
 	const mockData = true;
+
 	const data = mockData
 		? searchData
 		: await fetch(
@@ -34,7 +36,7 @@ export const getServerSideProps = async (context) => {
 					process.env.GOOGLE_SEARCH_API_KEY
 				}&cx=${process.env.GOOGLE_SEARCH_CONTEXT_KEY}&q=${context.query.term}${
 					context.query.searchType && '&searchType=image'
-				}`
+				}&start=${startIndex}`
 		  ).then((res) => {
 				return res.json();
 		  });

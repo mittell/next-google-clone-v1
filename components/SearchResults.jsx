@@ -1,5 +1,6 @@
 import React from 'react';
 import Parser from 'html-react-parser';
+import Pagination from './Pagination';
 
 const SearchResults = ({ results }) => {
 	const styles = {
@@ -32,6 +33,7 @@ const SearchResults = ({ results }) => {
 					<p className={styles.resultContent}>{Parser(result.htmlSnippet)}</p>
 				</div>
 			))}
+			<Pagination />
 		</div>
 	);
 };
