@@ -32,10 +32,10 @@ export default Search;
 
 export const getServerSideProps = async (context) => {
 	const startIndex = context.query.start || '1';
-	const mockData = true;
+	const mockData = false;
 
 	const data = mockData
-		? imageData
+		? searchData
 		: await fetch(
 				`https://www.googleapis.com/customsearch/v1?key=${
 					process.env.GOOGLE_SEARCH_API_KEY
