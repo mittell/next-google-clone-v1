@@ -26,6 +26,27 @@ export default function Home() {
 		});
 	};
 
+	const handleRandomSearch = async (e) => {
+		e.preventDefault();
+
+		const searchTermResult = await fetch(
+			'https://random-word-api.herokuapp.com/word?number=1'
+		).then((response) => {
+			return response.json();
+		});
+
+		const searchTerm = searchTermResult[0].trim();
+
+		if (!searchTerm) {
+			return;
+		}
+
+		router.push({
+			pathname: '/search',
+			query: { term: searchTerm, searchType: '' },
+		});
+	};
+
 	const styles = {
 		form: 'flex flex-col items-center mt-40',
 		inputContainer:
@@ -73,7 +94,9 @@ export default function Home() {
 					<button className={styles.button} onClick={handleSearch}>
 						Google Search
 					</button>
-					<button className={styles.button}>I&apos;m Feeling Lucky</button>
+					<button className={styles.button} onClick={handleRandomSearch}>
+						I&apos;m Feeling Lucky
+					</button>
 				</div>
 			</form>
 
