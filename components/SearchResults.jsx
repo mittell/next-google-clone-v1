@@ -15,26 +15,28 @@ const SearchResults = ({ results }) => {
 	};
 
 	return (
-		<div className={styles.container}>
-			<p className={styles.resultInfo}>
-				About {results.searchInformation.formattedTotalResults} results (
-				{results.searchInformation.formattedSearchTime} seconds)
-			</p>
-			{results.items.map((result) => (
-				<div key={result.link} className={styles.resultContainer}>
-					<div className={styles.resultTitleGroup}>
-						<a href={result.link} className={styles.resultLink}>
-							{result.formattedUrl}
-						</a>
-						<a href={result.link} className={styles.resultTitleContainer}>
-							<h2 className={styles.resultTitle}>{result.title}</h2>
-						</a>
+		<>
+			<div className={styles.container}>
+				<p className={styles.resultInfo}>
+					About {results.searchInformation.formattedTotalResults} results (
+					{results.searchInformation.formattedSearchTime} seconds)
+				</p>
+				{results.items.map((result) => (
+					<div key={result.link} className={styles.resultContainer}>
+						<div className={styles.resultTitleGroup}>
+							<a href={result.link} className={styles.resultLink}>
+								{result.formattedUrl}
+							</a>
+							<a href={result.link} className={styles.resultTitleContainer}>
+								<h2 className={styles.resultTitle}>{result.title}</h2>
+							</a>
+						</div>
+						<p className={styles.resultContent}>{Parser(result.htmlSnippet)}</p>
 					</div>
-					<p className={styles.resultContent}>{Parser(result.htmlSnippet)}</p>
-				</div>
-			))}
+				))}
+			</div>
 			<Pagination />
-		</div>
+		</>
 	);
 };
 
