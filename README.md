@@ -1,4 +1,4 @@
-# Google Search Clone
+# Google Search Clone v1
 
 A Google Search clone built with Next.js and Tailwind.
 
